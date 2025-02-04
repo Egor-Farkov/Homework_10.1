@@ -24,4 +24,3 @@ def mask_account_card(all_name_card: str | int) -> str | int:
 
     return f'{name_letter_card} {name_number_card}'
 
-print(mask_account_card('Счет 64686473678894779589'))
