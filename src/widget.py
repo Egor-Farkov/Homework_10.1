@@ -2,7 +2,7 @@ import masks
 from typing import Union
 
 from src.masks import get_mask_card_number, get_mask_account
-
+from datetime import datetime
 
 def mask_account_card(all_name_card: str | int) -> str | int:
     new_list = all_name_card.split(' ')
@@ -23,4 +23,10 @@ def mask_account_card(all_name_card: str | int) -> str | int:
         name_number_card = get_mask_card_number(''.join(card_num))
 
     return f'{name_letter_card} {name_number_card}'
+
+
+def get_date(my_date: str) -> str:
+    date_object = datetime.strptime(my_date, '%Y-%m-%dT%H:%M:%S.%f')
+    return date_object.strftime('%d.%m.%Y')
+
 
