@@ -15,7 +15,7 @@ def mask_account_card(all_name_card: str) -> str:
         else:
             card_num.append(i)
 
-    name_letter_card = "".join(card_alph)
+    name_letter_card = " ".join(card_alph)
 
     if name_letter_card == "Счет":
         name_number_card = get_mask_account("".join(card_num))
