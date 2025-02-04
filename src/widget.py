@@ -1,11 +1,11 @@
-import masks
-from typing import Union
-
-from src.masks import get_mask_card_number, get_mask_account
 from datetime import datetime
 
-def mask_account_card(all_name_card: str | int) -> str | int:
-    new_list = all_name_card.split(' ')
+from src.masks import get_mask_account, get_mask_card_number
+
+
+def mask_account_card(all_name_card: str) -> str:
+    """Функция обработки данных о карте"""
+    new_list = all_name_card.split()
     card_num = []
     card_alph = []
 
@@ -15,18 +15,17 @@ def mask_account_card(all_name_card: str | int) -> str | int:
         else:
             card_num.append(i)
 
-    name_letter_card = ''.join(card_alph)
+    name_letter_card = "".join(card_alph)
 
-    if name_letter_card == 'Счет':
-        name_number_card = get_mask_account(''.join(card_num))
+    if name_letter_card == "Счет":
+        name_number_card = get_mask_account("".join(card_num))
     else:
-        name_number_card = get_mask_card_number(''.join(card_num))
+        name_number_card = get_mask_card_number("".join(card_num))
 
-    return f'{name_letter_card} {name_number_card}'
+    return f"{name_letter_card} {name_number_card}"
 
 
 def get_date(my_date: str) -> str:
-    date_object = datetime.strptime(my_date, '%Y-%m-%dT%H:%M:%S.%f')
-    return date_object.strftime('%d.%m.%Y')
-
-
+    """Функция обработки данных о счете"""
+    date_object = datetime.fromisoformat(my_date)
+    return date_object.strftime("%d.%m.%Y")

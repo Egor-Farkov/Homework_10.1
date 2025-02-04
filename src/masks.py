@@ -1,7 +1,7 @@
 from typing import Union
 
 
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """
     Функция принимает на вход номер карты в виде числа и
     возвращает маску номера по правилу
@@ -9,14 +9,13 @@ def get_mask_card_number(card_number: int) -> str:
     :return: маска номера
     """
     list_numbers = []
-    star_mask = "*" * (len(str(card_number)) - 10)
-    first_part_num = str(card_number)[0:6]
-    end_part_num = str(card_number)[-4:]
+    star_mask = "*" * (len(card_number) - 10)
+    first_part_num = card_number[0:6]
+    end_part_num = card_number[-4:]
     card_number_str = f"{first_part_num}{star_mask}{end_part_num}"
 
     for i in range(0, len(card_number_str), 4):
         list_numbers.append(card_number_str[i : i + 4])
-
 
     return " ".join(list_numbers)
 
