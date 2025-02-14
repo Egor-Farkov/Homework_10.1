@@ -15,7 +15,7 @@ def get_mask_card_number(card_number: str) -> str:
     card_number_str = f"{first_part_num}{star_mask}{end_part_num}"
 
     for i in range(0, len(card_number_str), 4):
-        list_numbers.append(card_number_str[i : i + 4])
+        list_numbers.append(card_number_str[i:i + 4])
 
     return " ".join(list_numbers)
 
