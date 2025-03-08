@@ -1,5 +1,4 @@
-def filter_by_state(data_state: list[dict],
-                    state: str = "EXECUTED") -> list[dict]:
+def filter_by_state(data_state: list[dict], state: str = "EXECUTED") -> list[dict]:
     """
     :param data_state: Функция принимает список словарей.
     :param state: Опциональное значение для ключа state
@@ -8,14 +7,10 @@ def filter_by_state(data_state: list[dict],
     только те словари, у которых ключ
     state соответствует указанному значению.
     """
+    if len(data_state) == 0:
+        raise ValueError("Входящий лист пуст")
 
-    filtered_list = []
-
-    for i in data_state:
-        if i["state"] == state:
-            filtered_list.append(i)
-
-    return filtered_list
+    return [i for i in data_state if i["state"] == state]
 
 
 def sort_by_date(data_list: list[dict], reverse: bool = True) -> list[dict]:
