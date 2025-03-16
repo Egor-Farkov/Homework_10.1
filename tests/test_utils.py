@@ -1,8 +1,6 @@
 import pathlib
 from unittest.mock import patch
 
-import pytest
-
 from src.utils import read_json
 
 path = pathlib.Path(__file__).parent.resolve()
@@ -29,7 +27,6 @@ def test_read_json(mock_open):  # type:ignore
 
     mock_open.return_value = []
     second_result_func = read_json("/Users/egorfedorovic/Documents/Skypro/Home_works/H_w_skypro/data/operations.json")
-    assert second_result_func == [{}]
-
-    with pytest.raises(Exception):
-        read_json("operations.json")
+    assert second_result_func == []
+    assert read_json("") == []
+    assert read_json("/Users/egorfedorovic/Documents/Skypro/Home_works/H_w_skypro/tests/test_file.json") == []

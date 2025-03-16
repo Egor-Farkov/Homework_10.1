@@ -28,3 +28,5 @@ def test_get_convert_currency(mock_get):  # type: ignore
 
     mock_get.return_value.json.return_value = {"result": 9.124}
     assert get_convert_currency(usd_amount) == 9.124
+
+    assert get_convert_currency({}) == 0

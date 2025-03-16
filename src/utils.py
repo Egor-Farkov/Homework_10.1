@@ -1,8 +1,7 @@
 import json
-from typing import Any
 
 
-def read_json(path: str) -> Any:
+def read_json(path: str) -> list:
     """
     Функция принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
      :param path: Путь к файлу json.
@@ -12,7 +11,7 @@ def read_json(path: str) -> Any:
         with open(path) as file:
             data = json.load(file)
             if len(data) == 0:
-                return [{}]
-        return data
-    except Exception:
-        raise Exception
+                return []
+        return list(data)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return []
