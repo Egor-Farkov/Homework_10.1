@@ -1,5 +1,4 @@
 import os
-from typing import Any
 
 import requests
 from dotenv import load_dotenv
@@ -8,7 +7,7 @@ load_dotenv(".env")
 API_KEY = os.getenv("API_KEY")
 
 
-def get_convert_currency(data: dict) -> Any:
+def get_convert_currency(data: dict) -> float:
     """
     Функция принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях.
     :param data: Принимает на вход транзакцию.
@@ -24,6 +23,7 @@ def get_convert_currency(data: dict) -> Any:
                 f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={code}&amount={amount}",
                 headers=headers,
             )
-            return response.json()["result"]
+            return float(response.json()["result"])
         else:
             return float(amount)
+    return 0
