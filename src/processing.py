@@ -10,7 +10,7 @@ def filter_by_state(data_state: list[dict], state: str = "EXECUTED") -> list[dic
     if len(data_state) == 0:
         raise ValueError("Входящий лист пуст")
 
-    return [i for i in data_state if i["state"] == state]
+    return [i for i in data_state if i.get("state", "") == state]
 
 
 def sort_by_date(data_list: list[dict], reverse: bool = True) -> list[dict]:

@@ -10,7 +10,11 @@ def filter_by_currency(lst: list[dict], currency: str) -> Iterator[dict]:
     """
     if len(lst) == 0:
         raise ValueError("Ошибка во входных данных листа словарей")
-    return (i for i in lst if i["operationAmount"]["currency"]["code"] == currency)
+    return (
+        i
+        for i in lst
+        if i.get("operationAmount", {}).get("currency", {}).get("code", None) == currency or i.get("currency_code")
+    )
 
 
 def transaction_descriptions(lst: list[dict]) -> Generator:

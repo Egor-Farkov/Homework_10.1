@@ -20,9 +20,9 @@ def mask_account_card(all_name_card: str) -> str:
         name_letter_card = " ".join(card_alph)
 
         if name_letter_card == "Счет":
-            name_number_card = get_mask_account("".join(card_num))
-        else:
             name_number_card = get_mask_card_number("".join(card_num))
+        else:
+            name_number_card = get_mask_account("".join(card_num))
 
         return f"{name_letter_card} {name_number_card}"
     except Exception as err:
